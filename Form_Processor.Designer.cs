@@ -59,7 +59,7 @@
             this.btn_Duplication.TabIndex = 0;
             this.btn_Duplication.Text = "Check Duplication";
             this.btn_Duplication.UseVisualStyleBackColor = true;
-            this.btn_Duplication.Click += new System.EventHandler(this.button1_Click);
+            this.btn_Duplication.Click += new System.EventHandler(this.CheckDuplication);
             // 
             // txt_id
             // 
@@ -76,7 +76,7 @@
             this.button2.TabIndex = 2;
             this.button2.Text = "Show Device";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.ShowLongestLifeTime);
             // 
             // btn_SearchLaunchTime
             // 
@@ -86,7 +86,7 @@
             this.btn_SearchLaunchTime.TabIndex = 3;
             this.btn_SearchLaunchTime.Text = "Search";
             this.btn_SearchLaunchTime.UseVisualStyleBackColor = true;
-            this.btn_SearchLaunchTime.Click += new System.EventHandler(this.button3_Click);
+            this.btn_SearchLaunchTime.Click += new System.EventHandler(this.SearchLaunchTime);
             // 
             // mainMenu
             // 
