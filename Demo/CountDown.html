@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CountDown</title>
+<style>
+#div_setValue {float :left; padding:30px; background-color : grey}
+.btn_submit {background-color:green; font-size : 17px;margin : 10px}
+.btn_stop {background-color:red; font-size : 17px; margin : 10px}
+#txt_totalTime  {float :right}
+#txt_showTime {float :right}
+#heading {text-align:center}
+#head_countDown {text-align:center}
+</style>
+<script type="text/javascript">
+var secondpass = 0;
+var countDown;
+	function CountDown(seconds, timeshow) 
+	{	
+		var second = seconds - secondpass
+		var secondleft =  second%60;
+		var minute = (second -secondleft)/60
+		var timer = document.getElementById("timespan");
+		var headingCount = document.getElementById("head_countDown");
+		if (second <= timeshow)
+		{
+			headingCount.style.display ="";
+			timer.innerHTML = minute + " minute(s): " + secondleft + " second(s)";
+		}
+		else
+		{
+			timer.innerHTML = "";
+		}
+		secondpass += +1;
+	}
+	function Start ()
+	{
+		var total = document.getElementById("txt_totalTime").value;
+		var showTime = document.getElementById("txt_showTime").value;
+		var headingText = document.getElementById("heading");
+		headingText.style.display ="";
+		countDown = setInterval (function () {CountDown (total, showTime)},1000);
+	}
+	function Stop ()
+	{
+		clearInterval(countDown);
+		secondpass = 0;
+	}
+	function changelocation()
+	{
+		var text = document.getElementById("count_text");
+		var newLeft = document.getElementById("txt_left").value;
+		var newRight = document.getElementById("txt_right").value;
+		text.style.left =newLeft.toString()+"px"; text.style.top =newRight.toString()+"px"; 
+	}
+</script>
+</head>
+
+<body>
+<div id="div_setValue">
+	Total Time (in second): <input type="textbox" value="300" id="txt_totalTime"></input> </br>
+	Time to show notification (in second) <input type ="textbox" value="250" id="txt_showTime" ></input> </br>
+	<input type="button" value="Submit" onclick="Start()" class="btn_submit"></input>
+	<input type="button" value="Stop" onclick="Stop()" class="btn_stop" ></input>
+</div>
+<div id="heading" style="display:none">
+	<h1  >CountDown Timer Is Running </h1>
+</div>
+<div id="head_countDown" style="display:none">
+	Enter new location for calculator : </br>
+	Left : <input type ="textbox" value="250" id="txt_left" >
+	Top : <input type ="textbox" value="250" id="txt_right" ></br>
+	<button id="btn_newlocation" onclick="changelocation()"class="btn_submit">Submit</button>
+	<h1 id="count_text" style="position: absolute;">Time Left : <span id ="timespan"></span></h1>
+</div>
+</body>
+</html>
